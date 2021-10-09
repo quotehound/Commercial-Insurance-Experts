@@ -1,0 +1,97 @@
+.backdrop {
+
+    background-image: url('./Assets/business.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+    max-height: 80vh;
+
+}
+
+a {
+    cursor: pointer;
+}
+
+.startIcon {
+    min-width: 150px;
+}
+
+
+.lastSec {
+    background-image: url('./Assets/side.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.icon {
+    width: 200px;
+}
+ 
+
+.pText {
+    width: 100%;
+    
+}
+.check {
+    background-image: url('./Assets/check.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+
+
+.spanText {
+    font-weight: bold;
+}
+
+.zipInput {
+    border: 1px solid #cccc;
+    color: #488BFF;  
+    max-width: 200px; 
+    height: 75px;
+    font-size: 22px;
+}
+
+ .zipSubmit{ 
+     max-width: 200px; 
+     height: 75px;
+     font-size: 18px;
+    
+ }
+
+ .logo {
+     width: 120px;
+ }
+ .formContainer {
+     max-width: 50%;
+     margin: 0 auto;
+     background-color: lightcyan;
+     padding: 50px;
+ }
+
+ .buttons  {
+     background-color: #488BFF;
+     min-height: 30px;
+     min-width: 105px;
+     border-radius: 6px;
+     color: white;
+     margin-right: 10px;
+     font-size: 22px;
+ }
+
+ .buttons:hover {
+     background-color: white;
+     color: #488BFF;
+     border: 1px solid #488BFF;
+     transition: border 400ms;
+ }
+
+ .formBack{
+     background-image: url('./Assets/business.png');
+     background-repeat: no-repeat;
+     background-position: top;
+     background-size: contain;
+     height: 80vh;
+ }
