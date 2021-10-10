@@ -14,7 +14,7 @@ class BusinessName extends Component {
     constructor(props) {
     super(props);
 
-    this.state = {businnessName: ''};
+    //this.state = {businnessName: ''};
 
     this.nextStep = this.nextStep.bind(this);
   }
@@ -27,10 +27,15 @@ class BusinessName extends Component {
 
     const urlParams = new URLSearchParams(urlSearch);
 
+    const lp = urlParams.get('lp_request_id');
+    const zip = urlParams.get('zip');
+
+    let businessName = document.getElementById('businessName').value;
+
    
 
-    if(address.length < 4){
-        toast.error("😬 Please enter a valid address!");   
+    if(businessName.length < 4){
+        toast.error("😬 Please enter a Business Name!");   
         values.preventDefault();
 
     }
@@ -41,9 +46,9 @@ class BusinessName extends Component {
       toast.dismiss();
 
 
-    this.props.setBusinessName();
+    this.props.setBusinessName(businessName);
 
-    this.props.history.push();
+    this.props.history.push('/coverage-select' + '?lp_request_id=' + lp + '&zip_code=' + zip + 'legal_business_name=' + businessName);
     }
       
   }
@@ -65,13 +70,13 @@ class BusinessName extends Component {
 
                                 <div className="text-right">
                                     <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
-                                        1%
+                                        3%
                                     </span>
                                 </div>
                             </div>
                             <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-100">
 
-                                <div style={{ width: "83%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
+                                <div style={{ width: "3%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
 
                             </div>
                         </div>

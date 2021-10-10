@@ -5,6 +5,8 @@ import './App.css';
 
 import NavBar from './NavBar'
 import LandingPage from './LandingPage';
+import BusinessName from './components/BusinessName';
+import CoverageType from './components/CoverageType';
 
 class App extends Component {
 
@@ -50,6 +52,7 @@ class App extends Component {
       year_business_founded: '',
       annual_revenue_over_next_12_months: '',
       number_of_employees: '',
+      coverage_type: '',
     }
   }
 
@@ -81,6 +84,38 @@ class App extends Component {
 
               />
             </Route>
+
+          <Route path='/business-name' exact>
+                <BusinessName
+
+                  setBusinessName={(v) => {
+                    this.setState({
+                      postData: {
+                        ...this.state.postData,
+                        legal_business_name: v,
+                      },
+                    });
+
+                    console.log(this.props.postData)
+                  }}
+                />
+          </Route>
+
+          <Route path='/coverage-select' exact>
+                  <CoverageType 
+
+                  setCoverageType = {(v) => {
+                    this.setState({
+                      postData: {
+                        coverage_type: v,
+                      },
+                    });
+                    console.log(v)
+                  }}
+
+
+/>
+          </Route>
           </Switch>
         </div>
       </BrowserRouter>
