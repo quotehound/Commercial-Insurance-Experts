@@ -28,7 +28,7 @@ class BusinessName extends Component {
     const urlParams = new URLSearchParams(urlSearch);
 
     const lp = urlParams.get('lp_request_id');
-    const zip = urlParams.get('zip');
+    const zip = urlParams.get('zip_code');
 
     let businessName = document.getElementById('businessName').value;
 
@@ -48,7 +48,7 @@ class BusinessName extends Component {
 
     this.props.setBusinessName(businessName);
 
-    this.props.history.push('/coverage-select' + '?lp_request_id=' + lp + '&zip_code=' + zip + 'legal_business_name=' + businessName);
+    this.props.history.push('/coverage-select' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&legal_business_name=' + businessName);
     }
       
   }

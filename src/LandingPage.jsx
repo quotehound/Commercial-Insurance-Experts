@@ -27,9 +27,9 @@ class LandingPage extends Component {
       }
 
       nextStep = (values) => {
-        let zipValue = document.getElementById('zipCode').value;
+        let zip = document.getElementById('zipCode').value;
 
-        if(zipValue.length < 5){
+        if(zip.length < 5){
             toast.error("😬 Please enter a valid zip code!");  
             
             values.preventDefault();
@@ -40,21 +40,22 @@ class LandingPage extends Component {
     
           toast.dismiss();
     
-          console.log("success: ", zipValue);
+          console.log("success: ", zip);
     
-          this.setState({zip_code: zipValue})
+          this.setState({zip_code: zip})
 
           const urlSearch = window.location.search;
 
           const urlParams = new URLSearchParams(urlSearch);
 
           const lp = urlParams.get('lp_request_id');
+
+         
+          this.props.setZipCode(zip);
     
-          this.props.setZipCode(zipValue);
+          console.log("updated props with value: ", zip);
     
-          console.log("updated props with value: ", zipValue);
-    
-          this.props.history.push('/business-name' + '?lp_request_id=' + lp + '&zip_code=' +  zipValue);
+          this.props.history.push('/business-name' + '?lp_request_id=' + lp + '&zip_code=' +  zip);
         }
           
       }

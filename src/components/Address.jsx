@@ -40,7 +40,23 @@ class Address extends Component {
 
     this.props.setAddress(address);
 
-    this.props.history.push('/name');
+    const urlSearch = window.location.search;
+
+        const urlParams = new URLSearchParams(urlSearch);
+    
+        const lp = urlParams.get('lp_request_id');
+        const zip = urlParams.get('zip_code');
+        const businessName = urlParams.get('legal_business_name');
+        const coverageTypes = urlParams.get('coverage_type');
+        const structure = urlParams.get('business_structure');
+        const profession = urlParams.get('business_profession');
+        const year = urlParams.get('year_business_founded');
+        const revenue = urlParams.get('annual_revenue_over_next_12_months');
+        const employee = urlParams.get('number_of_employees');
+
+    
+        this.props.history.push('/name' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&legal_business_name=' + businessName + '&coverage_type=' + coverageTypes + '&business_structure=' + structure + '&business_profession=' + profession + '&year_business_founded=' + year + '&annual_revenue_over_next_12_months=' + revenue + '&number_of_employees=' + employee + '&address=' + address);
+
     }
       
   }

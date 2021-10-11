@@ -46,7 +46,7 @@ class App extends Component {
         'By clicking Get My Quote I provide my electronic signature and express written consent to telemarketing calls, text messages, emails, and postal mail from this Web site, our marketing and re-marketing network, and up to eight insurance companies or their affiliates or representatives at the phone number (including wireless number), email address, and postal address provided by me. I consent to calls and text messages transmitting insurance quotes, or seeking related additional information from me, using an Automatic Telephone Dialing System or prerecorded or artificial voices. I consent that my signature is not a condition of purchasing any property, goods, or services and that I may revoke my consent at any time.',
       trusted_form_cert_id: '',
       jornaya_lead_id: '',
-      Landing_Page: 'commerciainsuranceexperts.com',
+      Landing_Page: 'commercialinsuranceexperts.com',
       first_name: '',
       last_name: '',
       phone_home: '',
@@ -57,7 +57,6 @@ class App extends Component {
       zip_code: '',
       business_structure: '',
       ein: 'Yes',
-      EIN_Number: '123456789',
       business_profession: '',
       year_business_founded: '',
       annual_revenue_over_next_12_months: '',
@@ -257,10 +256,14 @@ class App extends Component {
                        entrance_url: v,
                      }
                    })
+                   console.log(this.props.postData)
+
                  }}
  
+                 
  
                  postData={this.state.postData}
+
               />
             </Route>
 

@@ -45,9 +45,9 @@ class CoverageType extends Component {
 
        
 
-        this.props.setCoverageType(options);
+        this.props.setCoverageType(index);
 
-        console.log(options)
+        console.log(index)
 
     }
 
@@ -68,18 +68,18 @@ class CoverageType extends Component {
     }
 
 
-    step = (options) => {
+    step = (index) => {
 
         const urlSearch = window.location.search;
 
         const urlParams = new URLSearchParams(urlSearch);
     
         const lp = urlParams.get('lp_request_id');
-        const zip = urlParams.get('zip');
+        const zip = urlParams.get('zip_code');
         const businessName = urlParams.get('legal_business_name');
        
         
-        this.props.history.push('/business-type' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&egal_business_name=' + businessName + '&coverage_type=' + options);
+        this.props.history.push('/business-type' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&legal_business_name=' + businessName + '&coverage_type=' + index);
     }
 
     render() {

@@ -33,8 +33,22 @@ class Revenue extends Component {
     
     
         this.props.setRevenue(revenue);
+
+        const urlSearch = window.location.search;
+
+        const urlParams = new URLSearchParams(urlSearch);
     
-        this.props.history.push('/employees');
+        const lp = urlParams.get('lp_request_id');
+        const zip = urlParams.get('zip_code');
+        const businessName = urlParams.get('legal_business_name');
+        const coverageTypes = urlParams.get('coverage_type');
+        const structure = urlParams.get('business_structure');
+        const profession = urlParams.get('business_profession');
+        const year = urlParams.get('year_business_founded')
+    
+        this.props.history.push('/employees' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&egal_business_name=' + businessName + '&coverage_type=' + coverageTypes + '&business_structure=' + structure + '&business_profession=' + profession + '&year_business_founded=' + year + '&annual_revenue_over_next_12_months=' + revenue);
+    
+
         }
 
     }

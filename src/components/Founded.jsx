@@ -47,9 +47,22 @@ class Founded extends Component {
     
     
     
-     this.props.setYearFounded(year)
+     this.props.setYearFounded(year);
 
-     this.props.history.push('/revenue')
+     const urlSearch = window.location.search;
+
+        const urlParams = new URLSearchParams(urlSearch);
+    
+        const lp = urlParams.get('lp_request_id');
+        const zip = urlParams.get('zip_code');
+        const businessName = urlParams.get('legal_business_name');
+        const coverageTypes = urlParams.get('coverage_type');
+        const structure = urlParams.get('business_structure');
+        const profession = urlParams.get('business_profession');
+    
+        this.props.history.push('/revenue' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&egal_business_name=' + businessName + '&coverage_type=' + coverageTypes + '&business_structure=' + structure + '&business_profession=' + profession + '&year_business_founded=' + year);
+
+
 
     }
 

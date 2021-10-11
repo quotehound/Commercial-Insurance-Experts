@@ -65,6 +65,26 @@ class EmailPhone extends Component {
 
         }
 
+        const urlSearch = window.location.search;
+
+        const urlParams = new URLSearchParams(urlSearch);
+    
+        const lp = urlParams.get('lp_request_id');
+        const zip = urlParams.get('zip_code');
+        const businessName = urlParams.get('legal_business_name');
+        const coverageTypes = urlParams.get('coverage_type');
+        const structure = urlParams.get('business_structure');
+        const profession = urlParams.get('business_profession');
+        const year = urlParams.get('year_business_founded');
+        const revenue = urlParams.get('annual_revenue_over_next_12_months');
+        const employee = urlParams.get('number_of_employees');
+        const address = urlParams.get('address');
+        const firstName = urlParams.get('first_name');
+        const lastName = urlParams.get('last_name');
+
+    
+       
+
 
 
 
@@ -72,26 +92,15 @@ class EmailPhone extends Component {
             loading: true
         }, this.postBusiness(this.props.postData));
 
-        this.props.history.push('/thank-you')
+        this.props.history.push('/thank-you' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&legal_business_name=' + businessName + '&coverage_type=' + coverageTypes + '&business_structure=' + structure + '&business_profession=' + profession + '&year_business_founded=' + year + '&annual_revenue_over_next_12_months=' + revenue + '&number_of_employees=' + employee + '&address=' + address + '&first_name=' + firstName + '&last_name=' + lastName + '&email_address=' + email + '&phone_home=' + phone);
+
+        console.log(this.props.postData)
     };
 
     postURL = (values) => {
         const urlSearch = window.location.search;
 
         const urlParams = new URLSearchParams(urlSearch);
-
-        const zip = urlParams.get('zip_code');
-        const pre = urlParams.get('pre_existing_conditions');
-        const lp = urlParams.get('lp_request_id')
-        const time = urlParams.get('coverage_time')
-        const income = urlParams.get('household_income');
-        const gender = urlParams.get('gender');
-        const people = urlParams.get('household_size');
-        const weight = urlParams.get('weight');
-        const height = urlParams.get('height');
-        const address = urlParams.get('address');
-        const fName = urlParams.get('first_name');
-        const lName = urlParams.get('last_name');
 
         let url = window.location.href;
 
@@ -123,6 +132,7 @@ class EmailPhone extends Component {
         console.log(postData);
         Axios.post("https://quotehound.leadspediatrack.com/post.do", null, {
             params: postData,
+
         })
 
             .then((res) => {
@@ -131,9 +141,9 @@ class EmailPhone extends Component {
                     this.setState({
                         loading: false,
                     }, () => {
-                        this.props.nextStep();
+                        // this.props.nextStep();
 
-                        this.props.callMediaAlpha();
+                        // this.props.callMediaAlpha();
 
                     });
                 }
