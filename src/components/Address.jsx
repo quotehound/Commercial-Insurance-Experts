@@ -40,7 +40,7 @@ class Address extends Component {
 
     this.props.setAddress(address);
 
-    this.props.history.push();
+    this.props.history.push('/name');
     }
       
   }

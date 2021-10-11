@@ -13,6 +13,9 @@ import Founded from './components/Founded';
 import Revenue from './components/Revenue';
 import Employees from './components/Employees';
 import Address from './components/Address';
+import Name from './components/Name';
+import EmailPhone from './components/EmailPhone';
+import ThankYou from './components/ThankYou';
 class App extends Component {
 
 
@@ -34,14 +37,16 @@ class App extends Component {
     ],
 
     postData: {
-      lp_campaign_id: '5fe10f48a0ba0',
-      lp_campaign_key: 'vfB6nWKXFx9L3jPyZc7t',
+      lp_campaign_id: '615db3dcbc748',
+      lp_campaign_key: 'TFWr3YVyjdHx9qcgnCbK',
+      lp_s1: '12',
+      lp_s2: '13',
       TCPA_Consent: 'Yes',
       TCPA_Language:
         'By clicking Get My Quote I provide my electronic signature and express written consent to telemarketing calls, text messages, emails, and postal mail from this Web site, our marketing and re-marketing network, and up to eight insurance companies or their affiliates or representatives at the phone number (including wireless number), email address, and postal address provided by me. I consent to calls and text messages transmitting insurance quotes, or seeking related additional information from me, using an Automatic Telephone Dialing System or prerecorded or artificial voices. I consent that my signature is not a condition of purchasing any property, goods, or services and that I may revoke my consent at any time.',
       trusted_form_cert_id: '',
       jornaya_lead_id: '',
-      Landing_Page: 'business.quotehound.com',
+      Landing_Page: 'commerciainsuranceexperts.com',
       first_name: '',
       last_name: '',
       phone_home: '',
@@ -51,8 +56,8 @@ class App extends Component {
       address: '',
       zip_code: '',
       business_structure: '',
-      ein: '',
-      EIN_Number: '',
+      ein: 'Yes',
+      EIN_Number: '123456789',
       business_profession: '',
       year_business_founded: '',
       annual_revenue_over_next_12_months: '',
@@ -83,6 +88,8 @@ class App extends Component {
                       ...this.state.postData,
                       zip_code: v,
                       lp_request_id: document.getElementById('lp').value,
+                      jornaya_lead_id: document.getElementById('leadid_token').value,
+                      trusted_form_cert_id: document.getElementById('xxTrustedFormToken_0').value,
                     },
                   });
                 }}
@@ -187,13 +194,82 @@ class App extends Component {
             </Route>
 
             <Route path='/address' exact>
-
               <Address
-
-              
-
+                setAddress={(v) => {
+                  this.setState({
+                    postData: {
+                      address: v
+                    }
+                  })
+                }}
               />
-              
+            </Route>
+            
+            <Route path='/name' exact>
+                <Name
+                  setFName={(v) => {
+                    this.setState({
+                      postData: {
+                        first_name: v,
+                      },
+                    });
+                  }}
+
+                  setLName={(v) => {
+                    this.setState({
+                      postData: {
+                        last_name: v,
+                      },
+                    });
+                  }}
+                />
+            </Route>
+
+            
+            <Route path='/email-phone' exact>
+              <EmailPhone
+                 email_address={this.state.postData.email_address}
+                 phone_home={this.state.postData.phone_home}
+ 
+                 setEmail={(v) => {
+                   this.setState({
+                     postData: {
+                       ...this.state.postData,
+                       email_address: v,
+                     },
+                   });
+                 }}
+ 
+                 setPhone={(v) => {
+                   this.setState({
+                     postData: {
+ 
+                       ...this.state.postData,
+                       phone_home: v,
+                     },
+                   });
+                 }}
+ 
+                 setURL={(v) => {
+                   this.setState({
+                     postData: {
+                       ...this.state.postData,
+                       entrance_url: v,
+                     }
+                   })
+                 }}
+ 
+ 
+                 postData={this.state.postData}
+              />
+            </Route>
+
+            <Route path='/thank-you' exact>
+              <ThankYou
+
+                postData2={this.state.postData}
+    
+              />
             </Route>
           </Switch>
         </div>

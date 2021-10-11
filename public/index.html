@@ -14,13 +14,65 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     
     <title>React App</title>
+
+    <meta name="facebook-domain-verification" content="4tbh5gl4mhcqg90ymjuz3jlrg7oyjz" />
+
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
 
-  <input type="hidden" id="lp" name="lp" />
+
+  <!-- Generate a TrustedForm Certificate -->
+  <script type="text/javascript">
+    (function() {
+      var field = 'trusted_form_cert_id';
+      var provideReferrer = false;
+      var tf = document.createElement('script');
+      tf.type = 'text/javascript'; tf.async = true; 
+      tf.src = 'http' + ('https:' == document.location.protocol ? 's' : '') +
+      '://api.trustedform.com/trustedform.js?provide_referrer=' + escape(provideReferrer) + '&field=' + escape(field) + '&l='+new Date().getTime()+Math.random();
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(tf, s); }
+    )();
+    </script>
+    <noscript>
+      <img src="http://api.trustedform.com/ns.gif" />
+    </noscript>
+    
+  
+  
+  <script id="LeadiDscript" type="text/javascript">
+    (function() {
+    var s = document.createElement('script');
+    s.id = 'LeadiDscript_campaign';
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = '//create.lidstatic.com/campaign/eb823e1f-5094-044b-8797-f648627f0c25.js?snippet_version=2';
+    var LeadiDscript = document.getElementById('LeadiDscript');
+    LeadiDscript.parentNode.insertBefore(s, LeadiDscript);
+    })();
+    </script>
+    <noscript><img src='//create.leadid.com/noscript.gif?lac=45a2434e-3343-bea3-12ad-6220f9a33148&lck=eb823e1f-5094-044b-8797-f648627f0c25&snippet_version=2' /></noscript>
+  
+    <input id="leadid_token" name="universal_leadid" type="hidden" value=""/>
+
+    <input type="hidden" id="tele" name="tele" defaultValue />
+
+
+    <input type="hidden" id="lp" name="lp" /> 
+    <input type="hidden" id="url" name='url' />
+
+    <script> 
+      const urlSearch = window.location.search;
+
+      const urlParams = new URLSearchParams(urlSearch);
+
+      const lp = urlParams.get('lp_request_id');
+
+      document.getElementById('lp').value = lp;
+      </script> 
+
     
   </body>
 </html>
