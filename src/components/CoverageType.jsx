@@ -20,8 +20,7 @@ class CoverageType extends Component {
     }
     onNext = (values) => {
 
-        document.getElementById('next').hidden = true;
-
+    document.getElementById('next').hidden = true;
 
         const options = this.state.options;
 
@@ -69,8 +68,18 @@ class CoverageType extends Component {
     }
 
 
-    step = () => {
-        this.props.history.push('/next')
+    step = (options) => {
+
+        const urlSearch = window.location.search;
+
+        const urlParams = new URLSearchParams(urlSearch);
+    
+        const lp = urlParams.get('lp_request_id');
+        const zip = urlParams.get('zip');
+        const businessName = urlParams.get('legal_business_name');
+       
+        
+        this.props.history.push('/business-type' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&egal_business_name=' + businessName + '&coverage_type=' + options);
     }
 
     render() {
@@ -129,7 +138,11 @@ class CoverageType extends Component {
                                             <div className="text-sm leading-5 buttonBlock">
 
                                                 <label className="inline-flex items-center mt-3">
-                                                    <input type="checkbox" className="checkbox form-checkbox rounded h-7 w-7 text-blue-600" data-value="commercial_auto" value={"commercial_auto"} defaultChecked onChange={this.onNext} /><span className="ml-2 text-lg text-black font-medium">General Liability</span>
+                                                    <input type="checkbox" className="checkbox form-checkbox rounded h-7 w-7 text-blue-600" data-value="commercial_auto" value={"commercial_auto"}  onChange={this.onNext} /><span className="ml-2 text-lg text-black font-medium">General Liability</span>
+                                                </label>
+
+                                                <label className="inline-flex items-center mt-3">
+                                                    <input type="checkbox" className="checkbox form-checkbox rounded h-7 w-7 text-blue-600" data-value="commercial_auto" value={"commercial_auto"}  onChange={this.onNext} /><span className="ml-2 text-lg text-black font-medium">Commercial Auto</span>
                                                 </label>
 
                                                 <label className="inline-flex items-center mt-3">
@@ -151,7 +164,7 @@ class CoverageType extends Component {
                                             </div>
                                         </div>
 
-                                        <button className="px-6 py-4 mb-3 m-2 text-md font-bold bg-blue-400 hover:bg-blue-600 hover:shadow-lg text-white rounded transition duration-200 nextButton" id='next' onClick={this.step} >Next</button>
+                                        <button className="px-6 py-4 mb-3 m-2 text-md font-bold bg-blue-400 hover:bg-blue-600 hover:shadow-lg text-white rounded transition duration-200 nextButton" hidden id='next' onClick={this.step} >Next</button>
                                     </div>
 
                                 </form>

@@ -7,7 +7,12 @@ import NavBar from './NavBar'
 import LandingPage from './LandingPage';
 import BusinessName from './components/BusinessName';
 import CoverageType from './components/CoverageType';
-
+import BusinessType from './components/BusinessType';
+import Profession from './components/Profession';
+import Founded from './components/Founded';
+import Revenue from './components/Revenue';
+import Employees from './components/Employees';
+import Address from './components/Address';
 class App extends Component {
 
 
@@ -57,10 +62,10 @@ class App extends Component {
   }
 
   changeRoute = () => {
-		this.setState({
-			route: '',
-		});
-	};
+    this.setState({
+      route: '',
+    });
+  };
 
   render() {
     return (
@@ -69,7 +74,7 @@ class App extends Component {
           <NavBar />
           <Switch>
 
-          <Route path='/' exact >
+            <Route path='/' exact >
               <LandingPage
 
                 setZipCode={(v) => {
@@ -85,37 +90,111 @@ class App extends Component {
               />
             </Route>
 
-          <Route path='/business-name' exact>
-                <BusinessName
+            <Route path='/business-name' exact>
+              <BusinessName
 
-                  setBusinessName={(v) => {
-                    this.setState({
-                      postData: {
-                        ...this.state.postData,
-                        legal_business_name: v,
-                      },
-                    });
+                setBusinessName={(v) => {
+                  this.setState({
+                    postData: {
+                      ...this.state.postData,
+                      legal_business_name: v,
+                    },
+                  });
 
-                    console.log(this.props.postData)
-                  }}
-                />
-          </Route>
+                  console.log(this.props.postData)
+                }}
+              />
+            </Route>
 
-          <Route path='/coverage-select' exact>
-                  <CoverageType 
+            <Route path='/coverage-select' exact>
+              <CoverageType
 
-                  setCoverageType = {(v) => {
-                    this.setState({
-                      postData: {
-                        coverage_type: v,
-                      },
-                    });
-                    console.log(v)
-                  }}
+                setCoverageType={(v) => {
+                  this.setState({
+                    postData: {
+                      coverage_type: v,
+                    },
+                  });
+                  console.log(v)
+                }}
+              />
+            </Route>
 
+            <Route path='/business-type' exact>
 
-/>
-          </Route>
+              <BusinessType
+
+                setBusinessType={(v) => {
+                  this.setState({
+                    postData: {
+                      business_structure: v,
+                    },
+                  });
+                }}
+              />
+            </Route>
+
+            <Route path='/profession' exact>
+
+              <Profession
+                setBusinessProfession={(v) => {
+                  this.setState({
+                    postData: {
+                      business_profession: v,
+                    },
+                  });
+                }}
+              />
+            </Route>
+
+            <Route path='/founded' exact>
+              <Founded
+                setYearFounded={(v) => {
+                  this.setState({
+                    postData: {
+                      year_business_founded: v
+                    },
+                  });
+                }}
+
+              />
+            </Route>
+
+            <Route path='/revenue' exact>
+              <Revenue
+                setRevenue={(v) => {
+                  this.setState({
+                    postData: {
+                      annual_revenue_over_next_12_months: v,
+                    },
+                  });
+                }}
+              />
+            </Route>
+
+            <Route path='/employees' exact>
+
+              <Employees
+
+                setEmployees={(v) => {
+                  this.setState({
+                    postData: {
+                      number_of_employees: v,
+                    },
+                  });
+                }}
+              />
+            </Route>
+
+            <Route path='/address' exact>
+
+              <Address
+
+              
+
+              />
+              
+            </Route>
           </Switch>
         </div>
       </BrowserRouter>
