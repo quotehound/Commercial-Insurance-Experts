@@ -60,6 +60,9 @@ class App extends Component {
       annual_revenue_over_next_12_months: '',
       number_of_employees: '',
       coverage_type: '',
+      useragent: navigator.userAgent,
+      lp_request_id: document.getElementById('lp').value,
+      entrance_url: document.referrer,
     }
   }
 
