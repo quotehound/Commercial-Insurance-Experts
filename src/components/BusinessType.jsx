@@ -9,13 +9,13 @@ import Footer from '../Footer';
 class BusinessType extends Component {
 
 
-    structure = (value) => {
+    structure = (values) => {
 
-        value.preventDefault();
+        values.preventDefault();
         
-        let type = value.currentTarget.dataset.value;
+        let type = values.currentTarget.dataset.value;
     
-        this.props.setBusinessType(value)
+        this.props.setBusinessType(type)
 
         const urlSearch = window.location.search;
 
@@ -86,7 +86,7 @@ class BusinessType extends Component {
 
                      <button className="chooseButton bg-blue-500 rounded text-white font-bold" type="button" data-config-id="05_button" data-value="Trust" onClick={this.structure}>Trust</button>
 
-                     <button className="chooseButton bg-blue-500 rounded text-white font-bold" type="button" data-config-id="05_button" data-value="Corporation/other" onClick={this.structure}>Corporation/other</button>
+                     <button className="chooseButton bg-blue-500 rounded text-white font-bold" type="button" data-config-id="05_button" data-value="Corporation / Other" onClick={this.structure}>Corporation/other</button>
 
      
                      

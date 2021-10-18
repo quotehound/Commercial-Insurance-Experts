@@ -23,11 +23,12 @@ class CoverageType extends Component {
     document.getElementById('next').hidden = true;
 
         const options = this.state.options;
-
+        const op = values.target.dataset.value;
         let index;
 
 
         if (values.target.checked) {
+
             options.push(values.target.value)
 
             
@@ -41,13 +42,15 @@ class CoverageType extends Component {
         
         this.checkLength(options);
 
+        let string = options.toString();
+
         this.setState({ options: options })
 
        
 
-        this.props.setCoverageType(index);
+        this.props.setCoverageType(string);
 
-        console.log(index)
+        console.log(string)
 
     }
 

@@ -7,6 +7,7 @@ import Footer from '../Footer.jsx'
 class Employees extends Component {
 
     nextStep = (values) => {
+        values.preventDefault();
 
         let employee = values.currentTarget.dataset.value;
 

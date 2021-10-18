@@ -16,8 +16,8 @@ class EmailPhone extends Component {
 
         super(props);
 
-        // this.state = {email_address: ''}
-        // this.state = {phone_home: ''}
+        this.state = {email_address: ''}
+        this.state = {phone_home: ''}
 
         this.onFinish = this.onFinish.bind(this);
     }
@@ -81,32 +81,23 @@ class EmailPhone extends Component {
         const address = urlParams.get('address');
         const firstName = urlParams.get('first_name');
         const lastName = urlParams.get('last_name');
-
-    
-       
-
-
-
-
-        this.setState({
-            loading: true
-        }, this.postBusiness(this.props.postData));
-
-        this.props.history.push('/thank-you' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&legal_business_name=' + businessName + '&coverage_type=' + coverageTypes + '&business_structure=' + structure + '&business_profession=' + profession + '&year_business_founded=' + year + '&annual_revenue_over_next_12_months=' + revenue + '&number_of_employees=' + employee + '&address=' + address + '&first_name=' + firstName + '&last_name=' + lastName + '&email_address=' + email + '&phone_home=' + phone);
-
-        console.log(this.props.postData)
     };
 
     postURL = (values) => {
+
         const urlSearch = window.location.search;
 
         const urlParams = new URLSearchParams(urlSearch);
 
-        let url = window.location.href;
+        
 
-        document.getElementById('url').value = url;
+       let url = window.location.href;
 
-        this.props.setURL(url)
+       this.setState({
+        loading: true 
+      }, this.postBusinessData(this.props.postData));
+    
+      this.props.history.push('/thank-you'); 
 
     }
 
@@ -118,7 +109,7 @@ class EmailPhone extends Component {
     }
 
     postPhone = (values) => {
-
+        
         let phone = document.getElementById('phone_home').value;
 
         var realPhone = phone.replace(/\D/g, "");
@@ -128,33 +119,30 @@ class EmailPhone extends Component {
         this.props.setPhone(realPhone);
     }
 
-    postBusiness = (postData) => {
+    postBusinessData = (postData) => {
         console.log(postData);
         Axios.post("https://quotehound.leadspediatrack.com/post.do", null, {
-            params: postData,
-
+          params: postData,
         })
 
-            .then((res) => {
-                console.log(res)
-                if (res.status === 200) {
-                    this.setState({
-                        loading: false,
-                    }, () => {
-                        // this.props.nextStep();
-
-                        // this.props.callMediaAlpha();
-
-                    });
-                }
-            })
-            .catch((err) => {
-                if (err) throw err;
-            });
+        .then((res) => {
+            console.log(res)
+            if (res.status === 200) {
+              this.setState({
+                loading: false,
+              },() => {
+                this.props.nextStep();
+    
+              this.props.callMediaAlpha();
+            
+              });
+            }
+          })
+          .catch((err) => {
+            if (err) throw err;
+          });
 
     }
-
-
 
 
 
@@ -254,6 +242,7 @@ class EmailPhone extends Component {
                                     </form>
 
                                 </div>
+                                
 
                             </div>
                         </div>

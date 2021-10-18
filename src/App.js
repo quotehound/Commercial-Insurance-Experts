@@ -39,8 +39,6 @@ class App extends Component {
     postData: {
       lp_campaign_id: '615db3dcbc748',
       lp_campaign_key: 'TFWr3YVyjdHx9qcgnCbK',
-      lp_s1: '12',
-      lp_s2: '13',
       TCPA_Consent: 'Yes',
       TCPA_Language:
         'By clicking Get My Quote I provide my electronic signature and express written consent to telemarketing calls, text messages, emails, and postal mail from this Web site, our marketing and re-marketing network, and up to eight insurance companies or their affiliates or representatives at the phone number (including wireless number), email address, and postal address provided by me. I consent to calls and text messages transmitting insurance quotes, or seeking related additional information from me, using an Automatic Telephone Dialing System or prerecorded or artificial voices. I consent that my signature is not a condition of purchasing any property, goods, or services and that I may revoke my consent at any time.',
@@ -85,10 +83,9 @@ class App extends Component {
                   this.setState({
                     postData: {
                       ...this.state.postData,
-                      zip_code: v,
-                      lp_request_id: document.getElementById('lp').value,
                       jornaya_lead_id: document.getElementById('leadid_token').value,
                       trusted_form_cert_id: document.getElementById('xxTrustedFormToken_0').value,
+                      zip_code: v,
                     },
                   });
                 }}
@@ -107,7 +104,6 @@ class App extends Component {
                     },
                   });
 
-                  console.log(this.props.postData)
                 }}
               />
             </Route>
@@ -118,10 +114,11 @@ class App extends Component {
                 setCoverageType={(v) => {
                   this.setState({
                     postData: {
+                      ...this.state.postData,
+
                       coverage_type: v,
                     },
                   });
-                  console.log(v)
                 }}
               />
             </Route>
@@ -133,6 +130,7 @@ class App extends Component {
                 setBusinessType={(v) => {
                   this.setState({
                     postData: {
+                      ...this.state.postData,
                       business_structure: v,
                     },
                   });
@@ -146,6 +144,8 @@ class App extends Component {
                 setBusinessProfession={(v) => {
                   this.setState({
                     postData: {
+                      ...this.state.postData,
+
                       business_profession: v,
                     },
                   });
@@ -158,6 +158,8 @@ class App extends Component {
                 setYearFounded={(v) => {
                   this.setState({
                     postData: {
+                      ...this.state.postData,
+
                       year_business_founded: v
                     },
                   });
@@ -171,6 +173,8 @@ class App extends Component {
                 setRevenue={(v) => {
                   this.setState({
                     postData: {
+                      ...this.state.postData,
+
                       annual_revenue_over_next_12_months: v,
                     },
                   });
@@ -185,6 +189,8 @@ class App extends Component {
                 setEmployees={(v) => {
                   this.setState({
                     postData: {
+                      ...this.state.postData,
+
                       number_of_employees: v,
                     },
                   });
@@ -197,6 +203,8 @@ class App extends Component {
                 setAddress={(v) => {
                   this.setState({
                     postData: {
+                      ...this.state.postData,
+
                       address: v
                     }
                   })
@@ -209,6 +217,8 @@ class App extends Component {
                   setFName={(v) => {
                     this.setState({
                       postData: {
+                        ...this.state.postData,
+
                         first_name: v,
                       },
                     });
@@ -217,6 +227,8 @@ class App extends Component {
                   setLName={(v) => {
                     this.setState({
                       postData: {
+                        ...this.state.postData,
+
                         last_name: v,
                       },
                     });
@@ -253,11 +265,9 @@ class App extends Component {
                    this.setState({
                      postData: {
                        ...this.state.postData,
-                       entrance_url: v,
+                      entrance_url: v,
                      }
                    })
-                   console.log(this.props.postData)
-
                  }}
  
                  
@@ -270,7 +280,6 @@ class App extends Component {
             <Route path='/thank-you' exact>
               <ThankYou
 
-                postData2={this.state.postData}
     
               />
             </Route>
