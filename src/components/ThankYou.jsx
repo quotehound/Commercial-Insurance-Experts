@@ -17,6 +17,8 @@ class ThankYou extends Component {
 
       const tele = document.getElementById('tele').value;
 
+      console.log('tele value is ' + tele)
+
       console.log(phone)
         return (
 

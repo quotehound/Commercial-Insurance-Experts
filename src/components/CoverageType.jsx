@@ -50,6 +50,7 @@ class CoverageType extends Component {
 
         this.props.setCoverageType(string);
 
+
         console.log(string)
 
     }
@@ -71,7 +72,7 @@ class CoverageType extends Component {
     }
 
 
-    step = (index) => {
+    step = (values) => {
 
         const urlSearch = window.location.search;
 
@@ -82,7 +83,7 @@ class CoverageType extends Component {
         const businessName = urlParams.get('legal_business_name');
        
         
-        this.props.history.push('/business-type' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&legal_business_name=' + businessName + '&coverage_type=' + index);
+        this.props.history.push('/business-type' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&legal_business_name=' + businessName + '&coverage_type=' + 'coverage');
     }
 
     render() {

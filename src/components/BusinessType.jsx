@@ -28,7 +28,7 @@ class BusinessType extends Component {
 
        
         
-        this.props.history.push('/profession' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&legal_business_name=' + businessName + '&coverage_type=' + coverageTypes + '&business_structure=' + type);
+        this.props.history.push('/profession' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&legal_business_name=' + businessName + '&coverage_type=coverage' + '&business_structure=' + type);
 
     }
 

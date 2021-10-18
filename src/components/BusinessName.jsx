@@ -22,19 +22,9 @@ class BusinessName extends Component {
 
   nextStep = (values) =>  { 
         
-
-    const urlSearch = window.location.search;
-
-    const urlParams = new URLSearchParams(urlSearch);
-
-    const lp = urlParams.get('lp_request_id');
-    const zip = urlParams.get('zip_code');
-
     let businessName = document.getElementById('businessName').value;
 
-   
-
-    if(businessName.length < 4){
+     if(businessName.length < 4){
         toast.error("😬 Please enter a Business Name!");   
         values.preventDefault();
 
@@ -47,6 +37,15 @@ class BusinessName extends Component {
 
 
     this.props.setBusinessName(businessName);
+
+    
+    const urlSearch = window.location.search;
+
+    const urlParams = new URLSearchParams(urlSearch);
+
+    const lp = urlParams.get('lp_request_id');
+    const zip = urlParams.get('zip_code');
+
 
     this.props.history.push('/coverage-select' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&legal_business_name=' + businessName);
     }

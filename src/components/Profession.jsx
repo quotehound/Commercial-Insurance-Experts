@@ -47,7 +47,7 @@ class Profession extends Component {
         const coverageTypes = urlParams.get('coverage_type');
         const structure = urlParams.get('business_structure')
     
-        this.props.history.push('/founded' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&legal_business_name=' + businessName + '&coverage_type=' + coverageTypes + '&business_structure=' + structure + '&business_profession=' + businessProfession);
+        this.props.history.push('/founded' + '?lp_request_id=' + lp + '&zip_code=' + zip + '&legal_business_name=' + businessName + '&coverage_type=coverage' + '&business_structure=' + structure + '&business_profession=' + businessProfession);
         }
 
     }
