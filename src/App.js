@@ -33,7 +33,7 @@ class App extends Component {
       '/address',
       '/name',
       '/email-phone',
-      'thank-you'
+      '/thank-you'
     ],
 
     postData: {
