@@ -32,7 +32,7 @@ class Founded extends Component {
 
             let int = parseInt(year);
 
-            if(int < 1950){
+            if(int < 1800){
                 toast.error('Please Enter A Valid Year!');
 
                 value.preventDefault(); 
