@@ -7,6 +7,42 @@
 		<meta name="theme-color" content="#000000" />
 		<meta name="description" content="" />
 		<link rel="apple-touch-icon" href="https://uploads-ssl.webflow.com/5dfd95f78d0e1ee3b32e0f58/5e18f9e72b927d3b76c90f5e_Quote%20Hound.png" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+    <script>
+    
+      var requestOptions = {
+        async: true,
+        crossDomain: true,
+        method: 'GET',
+        redirect: 'follow',
+        url:'https://geolocation-db.com/json/8dd79c70-0801-11ec-a29f-e381a788c2c0'
+      };
+
+      $.ajax(requestOptions).done(function(response){
+        console.log(response);
+
+        var parse = JSON.parse(response);
+
+
+        let zip = parse.postal;
+        let city = parse.city;
+        let state = parse.state;
+
+        localStorage.setItem('zip', zip);
+
+        localStorage.setItem('city', city);
+        localStorage.setItem('state', state);
+
+        document.getElementById('zipCode').value = zip;
+        document.getElementById('city').value = city;
+        document.getElementById('state').value = state;
+      })
+      
+      
+    </script>
+    
 		<title> Free Commerical Insurance Quote</title>
 	  
 
@@ -82,6 +118,10 @@
 
     <input type="hidden" id="tele" name="tele"/>
 
+    <input type='hidden' name="zip" id='zipCode' />
+    <input type='hidden' name="city" id='city' />
+    <input type='hidden' name="state" id='state' />
+    
 
     <input type="hidden" id="lp" name="lp" /> 
     <input type="hidden" id="url" name='url' />

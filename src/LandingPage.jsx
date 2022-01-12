@@ -7,6 +7,9 @@ import { ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css';
 
 
+import $ from 'jquery'; 
+import { ziptastic } from 'jquery';
+
 import Logo from './Assets/qhlogo.png';
 
 
@@ -17,55 +20,113 @@ import Form from './Assets/Form.svg';
 
 class LandingPage extends Component {
 
-    constructor(props) {
-        super(props);
-    
-        this.state = {zip_code: ''};
-    
-        this.nextStep = this.nextStep.bind(this);
-        this.nextStep = this.nextStep.bind(this);
-      }
 
-      nextStep = (values) => {
-        let zip = document.getElementById('zipCode').value;
+ 
+  constructor(props) {
+    super(props);
 
-        if(zip.length < 5){
-            toast.error("😬 Please enter a valid zip code!");  
-            
-            values.preventDefault();
-        }
-        else{
-    
-          values.preventDefault();
-    
-          toast.dismiss();
-    
-          console.log("success: ", zip);
-    
-          this.setState({zip_code: zip})
+    this.state = {zip_code: ''};
 
-          const urlSearch = window.location.search;
+    this.nextStep = this.nextStep.bind(this);
+    this.nextStep = this.nextStep.bind(this);
+  }
+  
 
-          const urlParams = new URLSearchParams(urlSearch);
+  validateZip = (values) => {
 
-          const lp = urlParams.get('lp_request_id');
+    values.preventDefault();
 
-         
-          this.props.setZipCode(zip);
+    let val = document.getElementById('zip').value;
     
-          console.log("updated props with value: ", zip);
+    if(val.length < 5){
+      toast.error("😬 Please enter a valid zip code!");  
+      return 
+    }
+
+    else {
+
+      var ziptastic = require('ziptastic');
+
+      localStorage.setItem('zip', val);
+
+      document.getElementById('zipCode').value = val
+
+      let zipVal = localStorage.getItem('zip');
+
+
+      var requestOptions = {
+        async: true,
+        crossDomain: true,
+        method: 'GET',
+        redirect: 'follow',
+        url:'https://ziptasticapi.com/' + zipVal
+      };
+
+      $.ajax(requestOptions).done(function(response){
+        console.log(response);
+
+        var parse = JSON.parse(response);
+
+        let city = parse.city;
+        let state = parse.state;
+
+        localStorage.setItem('city', city);
+        localStorage.setItem('state', state);
+
+        document.getElementById('city').value = city;
+        document.getElementById('state').value = state;
+      })
+
+      
+
+    }
+  }
+
+
+
+  nextStep(values) {
     
-          this.props.history.push('/business-name' + '?lp_request_id=' + lp + '&zip_code=' +  zip);
-        }
-          
-      }
+        
+    let zipValue = localStorage.getItem('zip');
+
+     // this.props.validateZip(values);
+
+      values.preventDefault();
+
+      toast.dismiss();
+
+      console.log("success: ", zipValue);
+
+      this.setState({zip_code: zipValue})
+
+      const urlSearch = window.location.search;
+
+      const urlParams = new URLSearchParams(urlSearch);
+
+      const lp = urlParams.get('lp_request_id');
+
+     
+      this.props.setZipCode(zipValue);
+
+      console.log("updated props with value: ", zipValue);
+
+      this.props.history.push('/business-name' + '?lp_request_id=' + lp + '&zip_code=' +  zipValue);
+
+
+      
+  }
     
       autoFocusClick() {
         document.getElementById('zipCode').focus();
       }
 
 
-    render() {
+  render() {
+      
+    const list = this.state.zipcodes;
+
+    const zippy = localStorage.getItem('zip');
+    const state = localStorage.getItem('state');
         return (
             <div>
                 {/* End of header with Form */}
@@ -91,7 +152,7 @@ class LandingPage extends Component {
       <form onSubmit={this.nextStep} >
 
 <div className="flex justify items-center formSection py-10">
-<input className="appearance-none w-1/2 p-3 text-lg font-semibold leading-none bg-white rounded zipInput " type="text" name="addressField" placeholder="Zip Code" pattern="\d*" value={this.state.value} id="zipCode" maxLength={5}/>
+<input className="appearance-none w-1/2 p-3 text-lg font-semibold leading-none text-center bg-white rounded zipInput " type="text" name="addressField" placeholder="Zip Code" pattern="\d*" defaultValue={zippy}  onChange={this.validateZip} id="zip" minLength={5} maxLength={5} />
 <button className="px-6 py-4 mb-3 m-2 text-md font-bold bg-blue-400 hover:bg-blue-600 hover:shadow-lg text-white rounded transition duration-200 zipSubmit" type="submit">Start My Quote</button>
 
 </div>
