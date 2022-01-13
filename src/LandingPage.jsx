@@ -39,7 +39,7 @@ class LandingPage extends Component {
     let val = document.getElementById('zip').value;
     
     if(val.length < 5){
-      toast.error("😬 Please enter a valid zip code!");  
+      console.log('wrong length')
       return 
     }
 
@@ -47,12 +47,7 @@ class LandingPage extends Component {
 
       var ziptastic = require('ziptastic');
 
-      localStorage.setItem('zip', val);
-
-      document.getElementById('zipCode').value = val
-      document.getElementById('zip').value = val;
-
-      let zipVal = localStorage.getItem('zip');
+      let zipVal = document.getElementById('zip').value;
 
 
       var requestOptions = {
@@ -68,14 +63,31 @@ class LandingPage extends Component {
 
         var parse = JSON.parse(response);
 
-        let city = parse.city;
+
+        if (parse.error) {
+         toast.error('Please enter a correct zip code')
+        }
+
+        else {
+
+          localStorage.setItem('zip', val);
+
+          document.getElementById('zipCode').value = val
+          document.getElementById('zip').value = val;
+    
+          let zipVal = localStorage.getItem('zip');
+
+          let city = parse.city;
         let state = parse.state;
 
         localStorage.setItem('city', city);
         localStorage.setItem('state', state);
 
         document.getElementById('city').value = city;
-        document.getElementById('state').value = state;
+          document.getElementById('state').value = state;
+        }
+
+        
       })
 
       
