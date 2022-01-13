@@ -47,11 +47,11 @@ class LandingPage extends Component {
 
       var ziptastic = require('ziptastic');
 
-      localStorage.setItem('zip', val);
+      sessionStorage.setItem('zip', val);
 
       document.getElementById('zipCode').value = val
 
-      let zipVal = localStorage.getItem('zip');
+      let zipVal = sessionStorage.getItem('zip');
 
 
       var requestOptions = {
@@ -70,8 +70,8 @@ class LandingPage extends Component {
         let city = parse.city;
         let state = parse.state;
 
-        localStorage.setItem('city', city);
-        localStorage.setItem('state', state);
+        sessionStorage.setItem('city', city);
+        sessionStorage.setItem('state', state);
 
         document.getElementById('city').value = city;
         document.getElementById('state').value = state;
@@ -87,7 +87,7 @@ class LandingPage extends Component {
   nextStep(values) {
     
         
-    let zipValue = localStorage.getItem('zip');
+    let zipValue = sessionStorage.getItem('zip');
 
      // this.props.validateZip(values);
 
@@ -125,8 +125,8 @@ class LandingPage extends Component {
       
     const list = this.state.zipcodes;
 
-    const zippy = localStorage.getItem('zip');
-    const state = localStorage.getItem('state');
+    const zippy = sessionStorage.getItem('zip');
+    const state = sessionStorage.getItem('state');
         return (
             <div>
                 {/* End of header with Form */}
