@@ -42,6 +42,9 @@ class LandingPage extends Component {
       console.log('wrong length');
       return 
     }
+    if (val === 'cunt') {
+      toast.error('DONT SAY THAT WORD!')
+    }
 
     else {
 
