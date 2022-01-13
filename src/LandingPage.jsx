@@ -144,6 +144,7 @@ class LandingPage extends Component {
           pauseOnFocusLoss
           draggable
           pauseOnHover
+          limit={1}
           theme={'colored'}
         />
   <div className="relative z-10 container px-4 mx-auto">
